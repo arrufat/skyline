@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skyline</title>
+<meta name="description" content="The sky hour by hour, rain in the next hours, warnings, a widget, and a watch.">
+<link rel="icon" href="icon.png">
+<style>
+  :root { --text: #1c1b1f; --muted: #49454f; --bg: #fff; --link: #0b57d0; }
+  @media (prefers-color-scheme: dark) { :root { --text: #e6e1e5; --muted: #cac4d0; --bg: #141218; --link: #a8c7fa; } }
+  body { font: 17px/1.55 system-ui, sans-serif; max-width: 760px; margin: 48px auto; padding: 0 16px; color: var(--text); background: var(--bg); }
+  header { display: flex; align-items: center; gap: 16px; }
+  header img { width: 72px; height: 72px; border-radius: 18px; }
+  h1 { font-size: 2em; margin: 0; }
+  .tagline { color: var(--muted); margin: 2px 0 0; }
+  .shots { display: flex; gap: 24px; align-items: center; justify-content: center; margin: 40px 0; flex-wrap: wrap; }
+  .shots img { border-radius: 16px; max-width: 100%; }
+  .shots .phone { width: 260px; }
+  .shots .watch { width: 180px; border-radius: 50%; }
+  a { color: var(--link); }
+  footer { margin-top: 48px; color: var(--muted); font-size: 0.9em; }
+</style>
+</head>
+<body>
+<header>
+  <img src="icon.png" alt="">
+  <div>
+    <h1>Skyline</h1>
+    <p class="tagline">The sky, hour by hour</p>
+  </div>
+</header>
+
+<p>A weather app for Android phones, tablets, and Wear OS watches. The current sky and only what's worth knowing, the next hours of each reading on one graph, rain in the next four hours with a map, official warnings, the week ahead, a widget, and a watch app and tile.</p>
+<p>No accounts, no ads, no tracking.</p>
+
+<div class="shots">
+  <img class="phone" src="now.png" alt="Skyline on a phone: the current sky and the next hours">
+  <img class="watch" src="watch.png" alt="Skyline on a watch: the next 12 hours around the dial">
+</div>
+
+<footer>
+  <a href="privacy.html">Privacy policy</a> · <a href="mailto:skyline@arrufat.io">skyline@arrufat.io</a><br>
+  Forecasts from Open-Meteo.
+</footer>
+</body>
+</html>
