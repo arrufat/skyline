@@ -21,6 +21,10 @@
   .shots .watch { width: 180px; border-radius: 50%; }
   a { color: var(--link); }
   footer { margin-top: 48px; color: var(--muted); font-size: 0.9em; }
+  .get { display: flex; align-items: center; gap: 12px 20px; flex-wrap: wrap; margin: 28px 0 8px; }
+  .get .badge img { height: 64px; display: block; margin: -10px; }
+  .get .tester { display: inline-block; padding: 10px 20px; border: 1px solid var(--link); border-radius: 999px; color: var(--link); text-decoration: none; font-weight: 500; }
+  .get-note { color: var(--muted); font-size: 0.9em; margin: 12px 0 0; }
 </style>
 </head>
 <body>
@@ -35,6 +39,12 @@
 <p>A weather app for Android phones, tablets, and Wear OS watches. The current sky and only what's worth knowing, the next hours of each reading on one graph, rain in the next four hours with a map, official warnings, the week ahead, a widget, and a watch app and tile.</p>
 <p>I made Skyline after more than 15 years of Android weather apps that were either hard to read or kept the good parts behind a subscription. Knowing the weather helps every day, and the forecasts come from free, open data such as Open-Meteo, so Skyline is free too: no ads, nothing to buy, no accounts, no tracking. It's the weather app I always wanted.</p>
 
+<div class="get">
+  <a class="badge" href="https://play.google.com/store/apps/details?id=io.arrufat.skyline"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play"></a>
+  <a class="tester" href="mailto:skyline@arrufat.io?subject=Skyline%20tester">Ask to test</a>
+</div>
+<p class="get-note">Skyline is in testing on Google Play. To try it, write with the Gmail address on your Android phone, and you'll get it from Play with its updates.</p>
+
 <div class="shots">
   <img class="phone" src="now.png" alt="Skyline on a phone: the current sky and the next hours">
   <img class="watch" src="watch.png" alt="Skyline on a watch: the next 12 hours around the dial">
@@ -42,7 +52,7 @@
 
 <footer>
   <a href="privacy.html">Privacy policy</a> · <a href="mailto:skyline@arrufat.io">skyline@arrufat.io</a><br>
-  Forecasts from Open-Meteo.
+  Forecasts from Open-Meteo. Google Play and the Google Play logo are trademarks of Google LLC.
 </footer>
 </body>
 </html>
