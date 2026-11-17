@@ -13,57 +13,160 @@
 <meta property="og:image:width" content="1024">
 <meta property="og:image:height" content="500">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1e1a36">
 <link rel="icon" href="icon.png">
 <link rel="apple-touch-icon" href="icon.png">
 <style>
-  :root { --text: #1c1b1f; --muted: #49454f; --bg: #fff; --link: #0b57d0; }
-  @media (prefers-color-scheme: dark) { :root { --text: #e6e1e5; --muted: #cac4d0; --bg: #141218; --link: #a8c7fa; } }
-  body { font: 17px/1.55 system-ui, sans-serif; max-width: 760px; margin: 48px auto; padding: 0 16px; color: var(--text); background: var(--bg); }
-  header { display: flex; align-items: center; gap: 16px; }
-  header img { width: 72px; height: 72px; border-radius: 18px; }
-  h1 { font-size: 2em; margin: 0; }
-  .tagline { color: var(--muted); margin: 2px 0 0; }
-  .shots { display: flex; gap: 24px; align-items: center; justify-content: center; margin: 40px 0; flex-wrap: wrap; }
-  .shots img { border-radius: 16px; max-width: 100%; }
-  .shots .phone { width: 260px; }
-  .shots .watch { width: 180px; border-radius: 50%; }
-  .shots .tablet { width: 100%; height: auto; }
+  :root { --text: #1c1b1f; --muted: #49454f; --bg: #fff; --card: #f3f0f7; --link: #0b57d0; --line: #e1dde8; }
+  @media (prefers-color-scheme: dark) { :root { --text: #e6e1e5; --muted: #cac4d0; --bg: #141218; --card: #1d1b22; --link: #a8c7fa; --line: #2c2933; } }
+  * { box-sizing: border-box; }
+  body { font: 17px/1.55 system-ui, sans-serif; margin: 0; color: var(--text); background: var(--bg); }
   a { color: var(--link); }
-  footer { margin-top: 48px; color: var(--muted); font-size: 0.9em; }
-  .get { display: flex; align-items: center; gap: 12px 20px; flex-wrap: wrap; margin: 28px 0 8px; }
-  .get .badge img { height: 64px; display: block; margin: -10px; }
-  .get .tester { display: inline-block; padding: 10px 20px; border: 1px solid var(--link); border-radius: 999px; color: var(--link); text-decoration: none; font-weight: 500; }
-  .get-note { color: var(--muted); font-size: 0.9em; margin: 12px 0 0; }
+  img { max-width: 100%; height: auto; display: block; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  h2 { font-size: 1.7em; line-height: 1.2; margin: 0 0 12px; font-weight: 600; }
+  h3 { font-size: 1.15em; margin: 20px 0 4px; font-weight: 600; }
+  p { margin: 0 0 1em; }
+  section { padding: 72px 0; }
+  .muted { color: var(--muted); }
+
+  /* The storm's sky, as in the app. */
+  .hero { background: linear-gradient(#1e1a36, #3a3360); color: #fff; overflow: hidden; }
+  .hero .wrap { display: grid; grid-template-columns: 1fr 1.15fr; gap: 48px; align-items: center; padding-top: 72px; padding-bottom: 96px; }
+  .brand { display: flex; align-items: center; gap: 18px; }
+  .brand img { width: 84px; height: 84px; border-radius: 21px; }
+  h1 { font-size: 3.4em; line-height: 1; margin: 0; font-weight: 500; letter-spacing: -0.01em; }
+  .tagline { font-size: 1.25em; margin: 6px 0 0; opacity: 0.85; }
+  .lead { font-size: 1.1em; margin: 28px 0 0; opacity: 0.92; max-width: 30em; }
+  .get { display: flex; align-items: center; gap: 12px 16px; flex-wrap: wrap; margin: 28px 0 0; }
+  .get .badge img { height: 64px; margin: -10px; }
+  .get .pill { display: inline-block; padding: 10px 20px; border: 1px solid rgba(255, 255, 255, 0.6); border-radius: 999px; color: #fff; text-decoration: none; font-weight: 500; }
+  .get .pill:hover { background: rgba(255, 255, 255, 0.12); }
+  .get-note { font-size: 0.85em; margin: 18px 0 0; opacity: 0.7; max-width: 36em; }
+
+  .devices { position: relative; padding: 0 0 12% 12%; }
+  .devices img { border: 5px solid #000; box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35); }
+  .devices .tablet { border-radius: 18px; width: 100%; }
+  .devices .phone { position: absolute; left: 0; bottom: 0; width: 27%; aspect-ratio: 10 / 16; object-fit: cover; object-position: top; border-radius: 16px; }
+  .devices .watch { position: absolute; right: -3%; bottom: 1%; width: 25%; border-radius: 50%; }
+
+  .trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+  .trio figure { margin: 0; text-align: center; }
+  .trio img { width: 100%; max-width: 260px; margin: 0 auto; aspect-ratio: 1 / 2; object-fit: cover; object-position: top; border-radius: 22px; border: 1px solid var(--line); }
+  .trio p { color: var(--muted); max-width: 19em; margin: 0 auto; }
+
+  .band { background: var(--card); }
+  .map .text { max-width: 36em; margin-bottom: 32px; }
+  .map img { border-radius: 18px; border: 1px solid var(--line); width: 100%; }
+
+  .wrist .wrap { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: center; }
+  .wrist img { width: 240px; border-radius: 50%; border: 5px solid #000; }
+  .wrist .text { max-width: 32em; }
+
+  .why .wrap { max-width: 760px; }
+  .why p { font-size: 1.15em; }
+  .none { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; padding: 0; margin: 28px 0 0; }
+  .none li { padding: 6px 16px; border-radius: 999px; background: var(--bg); border: 1px solid var(--line); font-weight: 500; font-size: 0.95em; }
+
+  footer { padding: 40px 0 56px; color: var(--muted); font-size: 0.9em; border-top: 1px solid var(--line); }
+
+  @media (max-width: 860px) {
+    section { padding: 52px 0; }
+    .hero .wrap { grid-template-columns: 1fr; gap: 44px; padding-top: 48px; padding-bottom: 64px; }
+    h1 { font-size: 2.6em; }
+    .brand img { width: 68px; height: 68px; border-radius: 17px; }
+    .trio { grid-template-columns: 1fr; gap: 48px; }
+    .wrist .wrap { grid-template-columns: 1fr; gap: 28px; justify-items: center; }
+    .wrist img { width: 200px; }
+  }
 </style>
 </head>
 <body>
-<header>
-  <img src="icon.png" alt="">
-  <div>
-    <h1>Skyline</h1>
-    <p class="tagline">The sky, hour by hour</p>
+
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <div class="brand">
+        <img src="icon.png" alt="">
+        <div>
+          <h1>Skyline</h1>
+          <p class="tagline">The sky, hour by hour</p>
+        </div>
+      </div>
+      <p class="lead">A weather app for Android phones, tablets, and Wear OS watches. The current sky and only what's worth knowing, with the hours ahead on one graph.</p>
+      <div class="get">
+        <a class="badge" href="https://play.google.com/store/apps/details?id=io.arrufat.skyline"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play"></a>
+        <a class="pill" href="mailto:skyline@arrufat.io?subject=Skyline%20tester">Ask to test</a>
+        <a class="pill" href="app/">Open in your browser</a>
+      </div>
+      <p class="get-note">Skyline is in testing on Google Play. To try it, write with the Gmail address on your Android phone, and you'll get it from Play with its updates. The forecast and the map also run in a browser, without the widget, the notifications, or the watch.</p>
+    </div>
+    <div class="devices">
+      <img class="tablet" src="shots/tablet-now.webp" width="1600" height="900" alt="Skyline on a tablet: the current sky, the rain, and the map beside the next hours">
+      <img class="phone" src="shots/phone-now.webp" width="640" height="1280" alt="Skyline on a phone: the current sky and the next hours">
+      <img class="watch" src="shots/watch-now.webp" width="454" height="454" alt="Skyline on a watch: the next 12 hours around the dial">
+    </div>
   </div>
-</header>
-
-<p>A weather app for Android phones, tablets, and Wear OS watches. The current sky and only what's worth knowing, the next hours of each reading on one graph, rain in the next four hours with a map, official warnings, the week ahead, a widget, and a watch app and tile.</p>
-<p>I made Skyline after more than 15 years of Android weather apps that were either hard to read or kept the good parts behind a subscription. Knowing the weather helps every day, and the forecasts come from free, open data such as Open-Meteo, so Skyline is free too: no ads, nothing to buy, no accounts, no tracking. It's the weather app I always wanted.</p>
-
-<div class="get">
-  <a class="badge" href="https://play.google.com/store/apps/details?id=io.arrufat.skyline"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play"></a>
-  <a class="tester" href="mailto:skyline@arrufat.io?subject=Skyline%20tester">Ask to test</a>
-  <a class="tester" href="app/">Open in your browser</a>
 </div>
-<p class="get-note">Skyline is in testing on Google Play. To try it, write with the Gmail address on your Android phone, and you'll get it from Play with its updates. The forecast and the map also run in a browser, without the widget, the notifications, or the watch.</p>
 
-<div class="shots">
-  <img class="phone" src="now.png" alt="Skyline on a phone: the current sky and the next hours">
-  <img class="watch" src="watch.png" alt="Skyline on a watch: the next 12 hours around the dial">
-  <img class="tablet" src="tablet.png" width="2560" height="1440" loading="lazy" alt="Skyline on a tablet: the current sky, the rain, and the map beside the next hours">
-</div>
+<section>
+  <div class="wrap trio">
+    <figure>
+      <img src="shots/phone-details.webp" width="640" height="1280" alt="The current conditions as tiles over the next hours' graph">
+      <h3>Every reading on one graph</h3>
+      <p>Temperature, rain, wind, clouds, UV, air quality, and more, each a swipe away over the same hours.</p>
+    </figure>
+    <figure>
+      <img src="shots/phone-warnings.webp" width="640" height="1385" alt="Wind and flood warnings as pills under the temperature">
+      <h3>Official warnings</h3>
+      <p>From the weather service of the country you're in, in its own words, on the forecast and as notifications.</p>
+    </figure>
+    <figure>
+      <img src="shots/phone-week.webp" width="640" height="1280" alt="The week ahead, with one day's hours open">
+      <h3>The week, and any other day</h3>
+      <p>Each day's sky, highs, lows, and rain, with its hours a tap away, and any date back to 1940.</p>
+    </figure>
+  </div>
+</section>
+
+<section class="band map">
+  <div class="wrap">
+    <div class="text">
+      <h2>Rain, and where it's going</h2>
+      <p class="muted">Rain in the next hours as a strip under the sky, and on a map you can play: rain, clouds, wind, temperature, air quality, UV, warnings, and tropical storms.</p>
+    </div>
+    <img src="shots/tablet-map.webp" width="1800" height="1013" alt="The rain map over Ireland with its layers and timeline">
+  </div>
+</section>
+
+<section class="wrist">
+  <div class="wrap">
+    <img src="shots/watch-storm.webp" width="454" height="454" alt="The watch showing a thunderstorm at 20:00 with wind and flood warnings">
+    <div class="text">
+      <h2>On your wrist and your home screen</h2>
+      <p class="muted">The watch app and tile draw the next 12 hours around the dial: turn the crown to step through them. On the phone, a widget shows the sky ahead and the rain around you.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band why">
+  <div class="wrap">
+    <h2>Why it's free</h2>
+    <p>I made Skyline after more than 15 years of Android weather apps that were either hard to read or kept the good parts behind a subscription. Knowing the weather helps every day, and the forecasts come from free, open data such as Open-Meteo, so Skyline is free too. It's the weather app I always wanted.</p>
+    <ul class="none">
+      <li>No ads</li>
+      <li>Nothing to buy</li>
+      <li>No accounts</li>
+      <li>No tracking</li>
+    </ul>
+  </div>
+</section>
 
 <footer>
-  <a href="privacy.html">Privacy policy</a> · <a href="mailto:skyline@arrufat.io">skyline@arrufat.io</a><br>
-  Forecasts from Open-Meteo. Google Play and the Google Play logo are trademarks of Google LLC.
+  <div class="wrap">
+    <a href="privacy.html">Privacy policy</a> · <a href="mailto:skyline@arrufat.io">skyline@arrufat.io</a><br>
+    Forecasts from Open-Meteo. Google Play and the Google Play logo are trademarks of Google LLC.
+  </div>
 </footer>
 </body>
 </html>
