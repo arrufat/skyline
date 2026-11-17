@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Skyline</title>
 <meta name="description" content="The sky hour by hour, rain in the next hours, warnings, a widget, and a watch.">
+<meta property="og:title" content="Skyline">
+<meta property="og:description" content="The sky hour by hour, rain in the next hours, warnings, a widget, and a watch.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://skyline.arrufat.io/">
+<meta property="og:image" content="https://skyline.arrufat.io/feature-graphic.png">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="500">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="icon.png">
 <link rel="apple-touch-icon" href="icon.png">
 <style>
@@ -19,6 +27,7 @@
   .shots img { border-radius: 16px; max-width: 100%; }
   .shots .phone { width: 260px; }
   .shots .watch { width: 180px; border-radius: 50%; }
+  .shots .tablet { width: 100%; height: auto; }
   a { color: var(--link); }
   footer { margin-top: 48px; color: var(--muted); font-size: 0.9em; }
   .get { display: flex; align-items: center; gap: 12px 20px; flex-wrap: wrap; margin: 28px 0 8px; }
@@ -49,6 +58,7 @@
 <div class="shots">
   <img class="phone" src="now.png" alt="Skyline on a phone: the current sky and the next hours">
   <img class="watch" src="watch.png" alt="Skyline on a watch: the next 12 hours around the dial">
+  <img class="tablet" src="tablet.png" width="2560" height="1440" loading="lazy" alt="Skyline on a tablet: the current sky, the rain, and the map beside the next hours">
 </div>
 
 <footer>
