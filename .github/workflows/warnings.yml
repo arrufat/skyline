@@ -26,7 +26,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Copy MeteoAlarm's feeds
         id: mirror
@@ -38,11 +38,11 @@ jobs:
       # A scheduled run with nothing new leaves the site as it is.
       - name: Pack the site
         if: github.event_name != 'schedule' || steps.mirror.outputs.result == 'changed'
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: .
 
       - name: Publish
         id: deploy
         if: github.event_name != 'schedule' || steps.mirror.outputs.result == 'changed'
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
