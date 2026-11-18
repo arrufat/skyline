@@ -8,6 +8,8 @@
         /* The background is the page's alone, so the map under the canvas isn't behind the body's. */
         html, body { margin: 0; height: 100%; overflow: hidden; }
         html { background: #101418; }
+        /* Every touch is the page's: Compose leaves the browser a swipe whose scroll a nested connection took, which ends it. */
+        html { touch-action: none; }
     </style>
 </head>
 <body>
