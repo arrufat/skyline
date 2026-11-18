@@ -1,0 +1,48 @@
+# Publishes the site with a fresh copy of MeteoAlarm's feeds under /warnings/meteoalarm/, which the browser app reads,
+# as MeteoAlarm's own feeds refuse a page on another site. Pages' source must be "GitHub Actions".
+name: Publish with Europe's warnings
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Copy MeteoAlarm's feeds
+        id: mirror
+        run: |
+          python3 tools/mirror_meteoalarm.py warnings/meteoalarm | tee mirror.log
+          echo "result=$(tail -n 1 mirror.log)" >> "$GITHUB_OUTPUT"
+          rm mirror.log
+
+      # A scheduled run with nothing new leaves the site as it is.
+      - name: Pack the site
+        if: github.event_name != 'schedule' || steps.mirror.outputs.result == 'changed'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Publish
+        id: deploy
+        if: github.event_name != 'schedule' || steps.mirror.outputs.result == 'changed'
+        uses: actions/deploy-pages@v4
