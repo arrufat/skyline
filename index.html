@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Skyline</title>
-<meta name="description" content="The sky hour by hour, rain in the next hours, warnings, a widget, and a watch.">
+<meta name="description" content="A free weather app for Android. See the sky hour by hour, the rain on a map, and official warnings.">
 <meta property="og:title" content="Skyline">
-<meta property="og:description" content="The sky hour by hour, rain in the next hours, warnings, a widget, and a watch.">
+<meta property="og:description" content="A free weather app for Android. See the sky hour by hour, the rain on a map, and official warnings.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://skyline.arrufat.io/">
 <meta property="og:image" content="https://skyline.arrufat.io/feature-graphic.png">
@@ -65,8 +65,7 @@
 
   .why .wrap { max-width: 760px; }
   .why p { font-size: 1.15em; }
-  .none { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; padding: 0; margin: 28px 0 0; }
-  .none li { padding: 6px 16px; border-radius: 999px; background: var(--bg); border: 1px solid var(--line); font-weight: 500; font-size: 0.95em; }
+  .why p:last-child { margin: 0; }
 
   footer { padding: 40px 0 56px; color: var(--muted); font-size: 0.9em; border-top: 1px solid var(--line); }
 
@@ -93,13 +92,13 @@
           <p class="tagline">The sky, hour by hour</p>
         </div>
       </div>
-      <p class="lead">A weather app for Android phones, tablets, and Wear OS watches. The current sky and only what's worth knowing, with the hours ahead on one graph.</p>
+      <p class="lead">A free weather app for Android phones, tablets, and watches. It shows the sky now, and the hours ahead on one graph.</p>
       <div class="get">
         <a class="badge" href="https://play.google.com/store/apps/details?id=io.arrufat.skyline"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play"></a>
         <a class="pill" href="mailto:skyline@arrufat.io?subject=Skyline%20tester">Ask to test</a>
         <a class="pill" href="app/">Open in your browser</a>
       </div>
-      <p class="get-note">Skyline is in testing on Google Play. To try it, write with the Gmail address on your Android phone, and you'll get it from Play with its updates. The forecast and the map also run in a browser, without the widget, the notifications, or the watch.</p>
+      <p class="get-note">Skyline is in testing on Google Play. To try it, send me the Gmail address your Android phone uses. You'll then get it from Play, with its updates. You can also open the forecast and the map in a browser.</p>
     </div>
     <div class="devices">
       <img class="tablet" src="shots/tablet-now.webp" width="1600" height="900" alt="Skyline on a tablet: the current sky, the rain, and the map beside the next hours">
@@ -114,17 +113,17 @@
     <figure>
       <img src="shots/phone-details.webp" width="640" height="1280" alt="The current conditions as tiles over the next hours' graph">
       <h3>Every reading on one graph</h3>
-      <p>Temperature, rain, wind, clouds, UV, air quality, and more, each a swipe away over the same hours.</p>
+      <p>Swipe to change what the graph shows: temperature, rain, wind, clouds, UV, air quality, the sun and the moon.</p>
     </figure>
     <figure>
       <img src="shots/phone-warnings.webp" width="640" height="1385" alt="Wind and flood warnings as pills under the temperature">
       <h3>Official warnings</h3>
-      <p>From the weather service of the country you're in, in its own words, on the forecast and as notifications.</p>
+      <p>Warnings come from the weather service of the country you're in. They show on the forecast, and you get a notification.</p>
     </figure>
     <figure>
       <img src="shots/phone-week.webp" width="640" height="1280" alt="The week ahead, with one day's hours open">
       <h3>The week, and any other day</h3>
-      <p>Each day's sky, highs, lows, and rain, with its hours a tap away, and any date back to 1940.</p>
+      <p>Tap a day to see its hours. You can also look up any date back to 1940.</p>
     </figure>
   </div>
 </section>
@@ -133,7 +132,7 @@
   <div class="wrap">
     <div class="text">
       <h2>Rain, and where it's going</h2>
-      <p class="muted">Rain in the next hours as a strip under the sky, and on a map you can play: rain, clouds, wind, temperature, air quality, UV, warnings, and tropical storms.</p>
+      <p class="muted">A strip under the sky shows the rain in the next hours. The map plays it forward. It also shows clouds, wind, temperature, air quality, UV, warnings, and tropical storms.</p>
     </div>
     <img src="shots/tablet-map.webp" width="1800" height="1013" alt="The rain map over Ireland with its layers and timeline">
   </div>
@@ -144,7 +143,7 @@
     <img src="shots/watch-storm.webp" width="454" height="454" alt="The watch showing a thunderstorm at 20:00 with wind and flood warnings">
     <div class="text">
       <h2>On your wrist and your home screen</h2>
-      <p class="muted">The watch app and tile draw the next 12 hours around the dial: turn the crown to step through them. On the phone, a widget shows the sky ahead and the rain around you.</p>
+      <p class="muted">The watch draws the next 12 hours around its dial. Turn the crown to step through them. On the phone, a widget shows the sky ahead and the rain around you.</p>
     </div>
   </div>
 </section>
@@ -152,13 +151,8 @@
 <section class="band why">
   <div class="wrap">
     <h2>Why it's free</h2>
-    <p>I made Skyline after more than 15 years of Android weather apps that were either hard to read or kept the good parts behind a subscription. Knowing the weather helps every day, and the forecasts come from free, open data such as Open-Meteo, so Skyline is free too. It's the weather app I always wanted.</p>
-    <ul class="none">
-      <li>No ads</li>
-      <li>Nothing to buy</li>
-      <li>No accounts</li>
-      <li>No tracking</li>
-    </ul>
+    <p>I've used Android weather apps for more than 15 years. Most were hard to read, or kept the good parts behind a subscription. So I made the one I always wanted. Its forecasts come from free, open data such as Open-Meteo, so Skyline is free too.</p>
+    <p>Skyline has no server of its own. Your places and settings stay on your phone. The <a href="privacy.html">privacy policy</a> lists the services it asks for the weather.</p>
   </div>
 </section>
 
