@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skyline questions</title>
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<style>
+  body { font: 16px/1.55 system-ui, sans-serif; max-width: 680px; margin: 40px auto; padding: 0 16px; color: #1c1b1f; background: #fff; }
+  h1 { font-size: 1.6em; display: flex; align-items: center; gap: 12px; } h1 img { width: 44px; height: 44px; border-radius: 11px; } h2 { font-size: 1.15em; margin-top: 1.8em; }
+  @media (prefers-color-scheme: dark) { body { color: #e6e1e5; background: #141218; } a { color: #a8c7fa; } }
+</style>
+</head>
+<body>
+<h1><a href="./"><img src="icon.png" alt="Skyline"></a>Skyline questions</h1>
+
+<h2>Why doesn't a two-hour row's rain match the two hours added up?</h2>
+<p>Skyline adds the exact amounts, then rounds. 2.76 mm and 5.07 mm show as 2.8 and 5.1 by the hour, but together they make 7.83, so the two-hour row shows 7.8.</p>
+
+<h2>Why is the chance of rain so high sometimes?</h2>
+<p>It's <a href="https://open-meteo.com/">Open-Meteo</a>'s chance of more than 0.1 mm in that hour, anywhere in a square about 27 km wide. A few drops nearby count, so check the amount next to the hour. A day's chance is its wettest hour.</p>
+
+<h2>Why does Skyline's rain differ from other apps in Spain?</h2>
+<p>In Spain, Skyline averages Open-Meteo's rain with Météo-France's <a href="https://open-meteo.com/en/docs/meteofrance-api">AROME</a> for the next two days. Checked against rain gauges for a year, the average was right more often than either one.</p>
+
+<h2>Why do I see the next four hours' rain only sometimes?</h2>
+<p>The card needs a forecast with rain every 15 minutes, which only parts of Europe and North America have, and it only shows when rain is coming.</p>
+
+<h2>Is the rain map radar?</h2>
+<p>It's the forecast, from two hours ago to six hours ahead. It's smoother than radar and can miss a small shower.</p>
+
+<h2>Does Skyline track me?</h2>
+<p>Your places stay on your phone, and Skyline has no server. Your phone asks the weather services directly. The <a href="privacy.html">privacy policy</a> lists them.</p>
+
+<h2>Why isn't my widget up to date?</h2>
+<p>It updates about once an hour. If it falls behind, set Skyline's battery use to unrestricted in your phone's settings.</p>
+
+<h2>Why are there no warnings where I live?</h2>
+<p>Skyline shows each country's official warnings, but a few countries, such as Australia or Mexico, don't publish them in a way it can read yet.</p>
+
+<h2>Where are the other tabs?</h2>
+<p>Basic shows three tabs. Switch to Advanced in Settings, under Forecast, to see every tab and reorder them.</p>
+
+<h2>Something else?</h2>
+<p>Write to <a href="mailto:skyline@arrufat.io">skyline@arrufat.io</a>.</p>
+</body>
+</html>
