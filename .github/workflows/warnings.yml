@@ -4,7 +4,8 @@ name: Publish with Europe's warnings
 
 on:
   schedule:
-    - cron: "*/15 * * * *"
+    # Off the quarter hours, when GitHub drops the most scheduled runs.
+    - cron: "7,22,37,52 * * * *"
   push:
     branches: [main]
   workflow_dispatch:
