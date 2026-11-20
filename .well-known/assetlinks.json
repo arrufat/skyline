@@ -1,0 +1,16 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "io.arrufat.skyline",
+      "sha256_cert_fingerprints": [
+        "B8:0F:9F:93:57:C9:4C:9D:CF:EE:04:7A:74:54:62:01:8C:E3:1D:72:6D:A6:0E:75:80:61:FD:83:AA:20:4D:05",
+        "50:44:C0:B5:3F:EF:6B:9B:DF:7D:41:6D:6F:24:DC:08:C7:8C:2F:4E:A5:3F:6A:2B:4C:10:C4:18:0A:A2:0B:02",
+        "37:94:8E:AF:23:A4:7F:5D:78:D7:01:83:28:CB:BD:77:6A:CF:A5:21:24:60:B8:0A:D8:A2:C7:A5:B5:0B:29:78"
+      ]
+    }
+  }
+]
