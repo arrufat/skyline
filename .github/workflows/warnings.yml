@@ -1,5 +1,5 @@
 # Publishes the site with a fresh copy of MeteoAlarm's feeds under /warnings/meteoalarm/ and of NASA FIRMS' fires at
-# /fires/firms.json, which the browser app reads, as neither lets a page on another site read them. Pages' source must
+# /fires/detections.json, which the browser app reads, as neither lets a page on another site read them. Pages' source must
 # be "GitHub Actions".
 name: Publish with Europe's warnings
 
@@ -40,7 +40,7 @@ jobs:
       - name: Copy NASA FIRMS' fires
         id: fires
         run: |
-          python3 tools/mirror_firms.py fires/firms.json | tee fires.log
+          python3 tools/mirror_firms.py fires/detections.json | tee fires.log
           echo "result=$(tail -n 1 fires.log)" >> "$GITHUB_OUTPUT"
           rm fires.log
 
