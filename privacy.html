@@ -14,15 +14,17 @@
 </head>
 <body>
 <h1><a href="./"><img src="icon.png" alt="Skyline"></a>Skyline privacy policy</h1>
-<p>Last updated: 18 November 2026</p>
+<p>Last updated: 21 November 2026</p>
 
 <p>I made Skyline because I wanted a weather app that's clear to read and free. It has no server of its own. Your places and settings stay on your device. The only requests it makes are the ones listed here.</p>
 
 <h2>What the app sends</h2>
 <p>To show the weather, your phone or watch asks these free services directly. Like any website, each one sees your IP address and what was asked:</p>
 <ul>
-  <li><strong>Open-Meteo</strong> gets the coordinates of your places, for the forecast and the rain map. It also gets what you type when you search for a place.</li>
-  <li><strong>National weather services</strong> give the official warnings, such as MeteoAlarm in Europe or the US National Weather Service. Some get a place's coordinates.</li>
+  <li><strong>Open-Meteo</strong> gets the coordinates of your places, for the forecast. It also gets what you type when you search for a place. The maps of rain, wind, temperature, and air are read from Open-Meteo's files on Amazon Web Services, which sees the parts of the map you look at.</li>
+  <li><strong>National weather services</strong> give the official warnings, such as MeteoAlarm in Europe or the US National Weather Service. Some get a place's coordinates. Some countries' warnings come from copies kept by the World Meteorological Organization on Amazon Web Services.</li>
+  <li><strong>Bright Sky</strong>, a free service that passes on the German Weather Service's warnings, gets a place's coordinates when it's in Germany.</li>
+  <li><strong>GDACS</strong> (European Commission and United Nations) gives the tropical cyclones, and <strong>NASA FIRMS</strong> gives the fires seen by satellite. Everyone gets the same files from them, so they don't get your places.</li>
   <li><strong>Map tiles</strong> come from OpenFreeMap for the streets, and from SSEC RealEarth (University of Wisconsin–Madison) for the clouds.</li>
   <li><strong>Your device's geocoder</strong>, usually Google's, names a place on the map or where you are.</li>
 </ul>
@@ -32,7 +34,7 @@
 <p>Skyline reads your device's location only if you allow it, to show the weather where you are. It reads it in the background only if you allow it all the time. That is for rain alerts and the weather notification. Your places and recent forecasts stay on your device. They are deleted when you uninstall the app.</p>
 
 <h2>In a browser</h2>
-<p>The app at <a href="app/">skyline.arrufat.io/app</a> asks the same services from your browser, except your device's geocoder. Its files come from GitHub Pages, which sees your IP address like any web host. Your places and choices are kept in your browser's storage for this site. Clearing it removes them. Your location is read only if you ask for it and your browser allows it.</p>
+<p>The app at <a href="app/">skyline.arrufat.io/app</a> asks the same services from your browser, except your device's geocoder. Its files come from GitHub Pages, which sees your IP address like any web host. So do MeteoAlarm's warnings and NASA's fires: this site keeps copies of them, as those services don't let other sites read them. Your places and choices are kept in your browser's storage for this site. Clearing it removes them. Your location is read only if you ask for it and your browser allows it.</p>
 
 <h2>Changes</h2>
 <p>If this policy changes, the new version will be posted here with a new date.</p>
