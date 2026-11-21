@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Skyline</title>
+    <link rel="icon" href="icon.png">
+    <link rel="apple-touch-icon" href="icon.png">
+    <!-- What lets a browser install the page as an app. -->
+    <link rel="manifest" href="manifest.webmanifest">
+    <meta name="theme-color" content="#101418">
+    <!-- A shared place's link previews as Skyline: a static page has no picture of each place. -->
+    <meta name="description" content="The weather anywhere: the sky hour by hour, the rain on a map, and official warnings.">
+    <meta property="og:title" content="Skyline">
+    <meta property="og:description" content="The weather anywhere: the sky hour by hour, the rain on a map, and official warnings.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://skyline.arrufat.io/feature-graphic.png">
+    <meta property="og:image:width" content="1024">
+    <meta property="og:image:height" content="500">
+    <style>
+        /* The background is the page's alone, so the map under the canvas isn't behind the body's. */
+        html, body { margin: 0; height: 100%; overflow: hidden; }
+        html { background: #101418; }
+        /* Every touch is the page's: Compose leaves the browser a swipe whose scroll a nested connection took, which ends it. */
+        html { touch-action: none; }
+    </style>
+</head>
+<body>
+<script src="web.js"></script>
+</body>
+</html>
