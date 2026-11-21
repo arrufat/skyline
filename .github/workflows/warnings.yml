@@ -1,5 +1,6 @@
-# Publishes the site with a fresh copy of MeteoAlarm's feeds under /warnings/meteoalarm/, which the browser app reads,
-# as MeteoAlarm's own feeds refuse a page on another site. Pages' source must be "GitHub Actions".
+# Publishes the site with a fresh copy of MeteoAlarm's feeds under /warnings/meteoalarm/ and of NASA FIRMS' fires at
+# /fires/firms.json, which the browser app reads, as neither lets a page on another site read them. Pages' source must
+# be "GitHub Actions".
 name: Publish with Europe's warnings
 
 on:
@@ -36,9 +37,16 @@ jobs:
           echo "result=$(tail -n 1 mirror.log)" >> "$GITHUB_OUTPUT"
           rm mirror.log
 
+      - name: Copy NASA FIRMS' fires
+        id: fires
+        run: |
+          python3 tools/mirror_firms.py fires/firms.json | tee fires.log
+          echo "result=$(tail -n 1 fires.log)" >> "$GITHUB_OUTPUT"
+          rm fires.log
+
       # A scheduled run with nothing new leaves the site as it is.
       - name: Pack the site
-        if: github.event_name != 'schedule' || steps.mirror.outputs.result == 'changed'
+        if: github.event_name != 'schedule' || steps.mirror.outputs.result == 'changed' || steps.fires.outputs.result == 'changed'
         uses: actions/upload-pages-artifact@v5
         with:
           path: .
@@ -47,5 +55,5 @@ jobs:
 
       - name: Publish
         id: deploy
-        if: github.event_name != 'schedule' || steps.mirror.outputs.result == 'changed'
+        if: github.event_name != 'schedule' || steps.mirror.outputs.result == 'changed' || steps.fires.outputs.result == 'changed'
         uses: actions/deploy-pages@v5
