@@ -9,8 +9,9 @@ FIRMS credited, which the app does.
 The file is {"mirrored", "source", "fires"}: when it was copied, FIRMS' Last-Modified, and each fire as [latitude,
 longitude, the second it was last seen, its heat in MW], the least heat first. A fire is every detection in a square
 of 0.05°, as the app's mergedFires has it: their heat added up, placed where most of it is, seen when the latest was.
-If FIRMS can't be read, the site's copy stays. Its last line is "changed" when FIRMS has a newer file than the site's
-copy or that copy is over 2 hours old, else "unchanged", so the site is published again only then.
+FIRMS' file is downloaded only when its Last-Modified differs from the site's copy's, as it ignores If-Modified-Since;
+the copy stays when it doesn't or FIRMS can't be read. Its last line is "changed" when FIRMS has a newer file or the
+site's copy is over 2 hours old, else "unchanged", so the site is published again only then.
 """
 
 import collections
@@ -33,8 +34,8 @@ RENEW = datetime.timedelta(hours=2)
 LOW_CONFIDENCE = 30
 
 
-def fetch(url):
-    request = urllib.request.Request(url, headers={"User-Agent": AGENT})
+def fetch(url, method="GET"):
+    request = urllib.request.Request(url, headers={"User-Agent": AGENT}, method=method)
     with urllib.request.urlopen(request, timeout=120) as response:
         return response.read(), response.headers.get("Last-Modified")
 
@@ -95,7 +96,18 @@ def main():
         published = json.loads(fetch(PUBLISHED)[0])
     except Exception:
         published = None
+    stamp = now.strftime("%Y-%m-%dT%H:%M:%SZ")
     try:
+        latest = fetch(FILE, method="HEAD")[1]
+        if published is not None and latest and published.get("source") == latest:
+            # The same fires, copied again only to renew their time before the app takes them for stopped.
+            renew = is_old(published, now)
+            if renew:
+                published["mirrored"] = stamp
+            path.write_text(json.dumps(published, separators=(",", ":")), encoding="utf-8")
+            print(f"FIRMS has nothing newer than {latest}")
+            print("changed" if renew else "unchanged")
+            return
         body, modified = fetch(FILE)
         fires = merged(detections(body.decode("utf-8")))
         if len(fires) < 100:
@@ -106,11 +118,10 @@ def main():
             path.write_text(json.dumps(published, separators=(",", ":")), encoding="utf-8")
         print("unchanged")
         return
-    copy = {"mirrored": now.strftime("%Y-%m-%dT%H:%M:%SZ"), "source": modified, "fires": fires}
+    copy = {"mirrored": stamp, "source": modified, "fires": fires}
     path.write_text(json.dumps(copy, separators=(",", ":")), encoding="utf-8")
-    changed = published is None or published.get("source") != modified or is_old(published, now)
     print(f"{len(fires)} fires, {path.stat().st_size / 1e6:.1f} MB, from {modified}")
-    print("changed" if changed else "unchanged")
+    print("changed")
 
 
 if __name__ == "__main__":
