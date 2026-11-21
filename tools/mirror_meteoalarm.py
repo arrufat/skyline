@@ -100,7 +100,13 @@ def trimmed(feed, now):
             kept["area"] = areas
             infos.append(kept)
         if infos:
-            warnings.append({"alert": {"status": "Actual", "msgType": alert.get("msgType"), "sent": alert.get("sent"), "info": infos}})
+            warnings.append({"alert": {
+                "identifier": alert.get("identifier"),
+                "status": "Actual",
+                "msgType": alert.get("msgType"),
+                "sent": alert.get("sent"),
+                "info": infos,
+            }})
     return warnings
 
 
