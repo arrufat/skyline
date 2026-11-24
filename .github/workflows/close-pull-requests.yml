@@ -1,0 +1,19 @@
+# The app's code isn't here, so pull requests from others are closed with a pointer to the issues.
+name: Close pull requests
+
+on:
+  pull_request_target:
+    types: [opened, reopened]
+
+permissions:
+  pull-requests: write
+
+jobs:
+  close:
+    if: github.event.pull_request.user.login != github.repository_owner
+    runs-on: ubuntu-latest
+    steps:
+      - run: gh pr close "$PR" -R "$GITHUB_REPOSITORY" --comment "Thanks! This repository doesn't take pull requests, as the app's code isn't here. Please open an issue instead."
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}

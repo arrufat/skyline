@@ -1,0 +1,37 @@
+name: Something is wrong
+description: The app shows something wrong, stops, or doesn't do what it should.
+labels: [problem]
+body:
+  - type: markdown
+    attributes:
+      value: Issues are public. Don't post your exact address or anything else private.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you saw, and what you expected. A screenshot helps.
+    validations:
+      required: true
+  - type: dropdown
+    id: where
+    attributes:
+      label: Where
+      multiple: true
+      options: [Phone app, Tablet, Widget, Notification, Watch app or tile, Web app]
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Skyline's version
+      description: In Settings → About.
+  - type: input
+    id: device
+    attributes:
+      label: Device and Android version
+      placeholder: Pixel 9, Android 16
+  - type: input
+    id: place
+    attributes:
+      label: Place
+      description: The city or region, if it matters, for example for a warning or the rain.
