@@ -22,6 +22,10 @@
   <img src="shots/watch-now.webp" width="200" alt="The next 12 hours around a watch's dial">
 </p>
 
+<p align="center">
+  <img src="shots/tablet-map.webp" width="820" alt="The rain on a map on a tablet, with its timeline">
+</p>
+
 ## What it does
 
 - Shows the next hours on one graph: temperature, rain, wind, clouds, UV, air quality, and the sun and moon.
