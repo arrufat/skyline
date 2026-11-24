@@ -26,7 +26,7 @@ jobs:
     timeout-minutes: 10
     environment:
       name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
+      url: ${{ steps.deploy.outputs.page_url || steps.redeploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v7
 
@@ -55,9 +55,22 @@ jobs:
           # For .well-known/assetlinks.json, which hands the app's links to the Android app.
           include-hidden-files: true
 
+      # Publish at times can't find the artifact Pack uploaded a moment before, though it's there, so it tries again.
       - name: Publish
         id: deploy
         if: github.event_name != 'schedule' || steps.mirror.outputs.result == 'changed' || steps.fires.outputs.result == 'changed'
+        continue-on-error: true
+        uses: actions/deploy-pages@v5
+        with:
+          artifact_name: github-pages-${{ github.run_attempt }}
+
+      - name: Wait before publishing again
+        if: steps.deploy.outcome == 'failure'
+        run: sleep 30
+
+      - name: Publish again
+        id: redeploy
+        if: steps.deploy.outcome == 'failure'
         uses: actions/deploy-pages@v5
         with:
           artifact_name: github-pages-${{ github.run_attempt }}
